@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fomation E-Challenge (.Net) - TP1- My First DB", "Fomation E-Challenge (.Net) - TP1- My First DB.csproj", "{49334819-17BE-43E2-8BEB-91E537BC8CDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49334819-17BE-43E2-8BEB-91E537BC8CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49334819-17BE-43E2-8BEB-91E537BC8CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49334819-17BE-43E2-8BEB-91E537BC8CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49334819-17BE-43E2-8BEB-91E537BC8CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86A738BE-F76B-485D-B8A3-FBEC71908BAB}
+	EndGlobalSection
+EndGlobal

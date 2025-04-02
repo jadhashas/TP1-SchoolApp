@@ -9,6 +9,8 @@ using Fomation_E_Challenge__.Net____TP1__My_First_DB.Repositories;
 using Fomation_E_Challenge__.Net____TP1__My_First_DB.Repositories.Interfaces;
 using Fomation_E_Challenge__.Net____TP1__My_First_DB.Repository;
 using Fomation_E_Challenge__.Net____TP1__My_First_DB.Models;
+using Fomation_E_Challenge__.Net____TP1__My_First_DB.Services.Interfaces;
+using Fomation_E_Challenge__.Net____TP1__My_First_DB.Services;
 
 var host = Host.CreateDefaultBuilder(args).Build();
 
@@ -38,6 +40,11 @@ container.Register<SchoolContext>(() =>
 container.Register(typeof(IReadOnlyRepository<>), typeof(Repository<>), Lifestyle.Scoped);
 container.Register(typeof(IRepository<>), typeof(Repository<>), Lifestyle.Scoped);
 container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
+
+// Register les Services
+container.Register<IVueService, VueService>(Lifestyle.Scoped);
+container.Register<IProcService, ProcService>(Lifestyle.Scoped);
+
 
 // Vérification que tout ca marche
 container.Verify();
@@ -70,4 +77,12 @@ using (AsyncScopedLifestyle.BeginScope(container))
     var students = unitOfWork.Students.GetAll();
     foreach (var s in students)
         Console.WriteLine($" Étudiant : {s.StudentNumber}");
+
+    var vueService = container.GetInstance<IVueService>();
+    var data = await vueService.GetTeachersWithSubjectsAsync();
+    Console.WriteLine($"VueService.GetTeachersWithSubjectsAsync : {data.Count()}");
+
+    var procService = container.GetInstance<IProcService>();
+    var studentCamFromProc = await procService.GetStudentByNumberAsync("S2025");
+    Console.WriteLine($"ProcService.GetStudentByNumberAsync : {studentCamFromProc?.LastName}");
 }

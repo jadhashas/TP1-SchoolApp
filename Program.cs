@@ -11,13 +11,24 @@ using Fomation_E_Challenge__.Net____TP1__My_First_DB.Repository;
 using Fomation_E_Challenge__.Net____TP1__My_First_DB.Models;
 using Fomation_E_Challenge__.Net____TP1__My_First_DB.Services.Interfaces;
 using Fomation_E_Challenge__.Net____TP1__My_First_DB.Services;
+using Microsoft.Extensions.Logging;
 
-var host = Host.CreateDefaultBuilder(args).Build();
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureLogging(logging =>
+    {
+        logging.ClearProviders();
+        logging.AddConsole(); // tu peux aussi ajouter .AddDebug() si tu veux
+    })
+    .Build();
 
 // j' ai utiliser la doc dans le site de simpleinjector pour faire cette partie
 
 // Créer un conteneur SimpleInjector
 var container = new Container();
+container.RegisterConditional(typeof(ILogger<>),
+    context => typeof(Logger<>).MakeGenericType(context.ServiceType.GetGenericArguments()[0]),
+    Lifestyle.Singleton,
+    context => true);
 container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
 
 // Charger config
@@ -53,6 +64,7 @@ container.Verify();
 using (AsyncScopedLifestyle.BeginScope(container))
 {
     var unitOfWork = container.GetInstance<IUnitOfWork>();
+    //var logger = container.GetInstance<ILogger<Program>>();
 
     // Ajouter un nouvel étudiant
     var person = new Person

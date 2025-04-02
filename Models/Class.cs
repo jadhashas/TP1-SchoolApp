@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Fomation_E_Challenge__.Net____TP1__My_First_DB.Models
 {
-    internal class Class
+    public class Class
     {
         public int Id { get; set; }
         [Required]

@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Fomation_E_Challenge__.Net____TP1__My_First_DB.Context
 {
-    internal class SchoolContextFactory : IDesignTimeDbContextFactory<SchoolContext>
+    public class SchoolContextFactory : IDesignTimeDbContextFactory<SchoolContext>
     {
         public SchoolContext CreateDbContext(string[] args)
         {

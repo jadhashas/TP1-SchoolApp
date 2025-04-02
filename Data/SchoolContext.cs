@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Fomation_E_Challenge__.Net____TP1__My_First_DB.Data
 {
-    internal class SchoolContext : DbContext
+    public class SchoolContext : DbContext
     {
         public DbSet<Person> Persons { get; set; }
         public DbSet<Student> Students { get; set; }
